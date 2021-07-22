@@ -4,12 +4,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="125.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.merive.TimeController">
-    <Pane prefHeight="125.0" prefWidth="600.0" style="-fx-background-color: #1B262C;">
+<AnchorPane prefHeight="125.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.merive.TimeController">
+    <Pane prefHeight="125.0" prefWidth="600.0"
+          style="-fx-background-color: #1B262C; -fx-border-color: #bbe1fa; -fx-border-width: 4px;">
         <Label fx:id="time" alignment="CENTER" layoutY="48.0" prefHeight="21.0" prefWidth="600.0" textFill="#BBE1FA">
-           <font>
-               <Font name="Roboto" size="24.0"/>
-           </font>
+            <font>
+                <Font name="Roboto Light" size="28.0"/>
+            </font>
         </Label>
     </Pane>
 </AnchorPane>
