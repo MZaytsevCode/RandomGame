@@ -3,9 +3,12 @@ package com.merive;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,15 +18,19 @@ import java.util.ResourceBundle;
 public class LauncherController implements Initializable {
 
     @FXML
+    Pane titlebar;
+
+    @FXML
     Label label;
 
     @FXML
-    Button startButton, noteButton, calculatorButton, emailButton, timeButton, RRCButton, exitButton;
+    Button startButton, noteButton, calculatorButton, emailButton, timeButton, RRCButton, exitButton, hideButton;
 
     @FXML
     ImageView launcherImage, noteImage, calculatorImage, emailImage, timeImage, RRCImage;
 
     String selectedApplication;
+    double x, y;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -121,6 +128,23 @@ public class LauncherController implements Initializable {
         System.exit(0);
     }
 
+    public void hide() {
+        Stage obj = (Stage) titlebar.getScene().getWindow();
+        obj.setIconified(true);
+    }
+
+    @FXML
+    public void move(MouseEvent me) {
+        Stage stage = (Stage) ((Node) me.getSource()).getScene().getWindow();
+        stage.setX(me.getScreenX()-x);
+        stage.setY(me.getScreenY()-y);
+    }
+
+    @FXML
+    public void press(MouseEvent me) {
+        x = me.getSceneX();
+        y = me.getSceneY();
+    }
 
     public void resetImage() {
         launcherImage.setVisible(false);

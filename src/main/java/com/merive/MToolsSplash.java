@@ -34,7 +34,7 @@ public class MToolsSplash extends Application {
         stage.show();
 
         Platform.runLater(() -> {
-            try { Thread.sleep(5000); } catch (InterruptedException ignored) {}
+            try { Thread.sleep(2500); } catch (InterruptedException ignored) {}
             stage.hide();
             openLauncher();
         });
