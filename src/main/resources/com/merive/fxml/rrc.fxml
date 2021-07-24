@@ -1,53 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+<AnchorPane prefHeight="455.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.merive.RRCController">
-    <Pane layoutY="1.0" prefHeight="350.0" prefWidth="600.0">
+    <Pane layoutY="50.0" prefHeight="350.0" prefWidth="600.0">
         <Pane layoutY="-4.0" prefHeight="406.0" prefWidth="600.0"
-              style="-fx-background-color: #1B262C; -fx-border-color: #bbe1fa; -fx-border-width: 4px;">
-            <TextArea fx:id="message" layoutX="18.0" layoutY="14.0" prefHeight="268.0" prefWidth="564.0"
+              style="-fx-background-color: #1a2a33; -fx-border-color: #bbe1fa; -fx-border-width: 4px;">
+            <TextArea fx:id="message" layoutX="15.0" layoutY="14.0" prefHeight="268.0" prefWidth="571.0"
                       promptText="Write text"
-                      style="-fx-background-color: #1B262C; -fx-border-color: #bbe1fa; -fx-border-width: 4px;"
+                      style="-fx-background-color: #1a2a33; -fx-border-color: #bbe1fa; -fx-border-width: 4px;"
                       stylesheets="@../css/rrc.css" wrapText="true">
                 <font>
                     <Font name="Roboto Light" size="16.0"/>
                 </font>
             </TextArea>
-            <TextField fx:id="result" editable="false" layoutX="18.0" layoutY="294.0" prefHeight="27.0"
-                       prefWidth="564.0" promptText="..."
-                       style="-fx-background-color: #1B262C; -fx-border-color: #bbe1fa; -fx-border-width: 4px; -fx-text-fill: #bbe1fa;">
+            <TextField fx:id="result" editable="false" layoutX="15.0" layoutY="294.0" prefHeight="42.0"
+                       prefWidth="571.0" promptText="..."
+                       style="-fx-background-color: #1a2a33; -fx-border-color: #bbe1fa; -fx-border-width: 4px; -fx-text-fill: #bbe1fa;">
                 <font>
                     <Font name="Roboto Light" size="16.0"/>
                 </font>
             </TextField>
         </Pane>
     </Pane>
-    <Pane layoutY="346.0" prefHeight="60.0" prefWidth="600.0"
-          style="-fx-background-color: #1B262C; -fx-border-color: #bbe1fa; -fx-border-width: 4px;">
-        <Label alignment="CENTER" layoutX="14.0" layoutY="1.0" prefHeight="60.0" prefWidth="120.0" text="RRC"
-               textFill="#bbe1fa">
-            <font>
-                <Font name="Roboto Light" size="24.0"/>
-            </font>
-        </Label>
-        <Spinner fx:id="key" layoutX="167.0" layoutY="15.0" prefHeight="25.0" prefWidth="120.0" promptText="Key"
-                 style="-fx-background-color: #1B262C; -fx-border-color: #bbe1fa; -fx-border-width: 4px; -fx-text-fill: #bbe1fa;"
+    <Pane layoutY="395.0" prefHeight="60.0" prefWidth="600.0"
+          style="-fx-background-color: #1a2a33; -fx-border-color: #bbe1fa; -fx-border-width: 4px;">
+        <Spinner fx:id="key" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="120.0" promptText="Key"
+                 style="-fx-background-color: #1a2a33; -fx-border-color: #bbe1fa; -fx-border-width: 4px; -fx-text-fill: #bbe1fa;"
                  stylesheets="@../css/rrc.css">
             <valueFactory>
                 <SpinnerValueFactory.IntegerSpinnerValueFactory max="2147483646" min="0"/>
             </valueFactory>
         </Spinner>
-        <Button layoutX="307.0" layoutY="15.0" mnemonicParsing="false" onAction="#decrypt" prefHeight="27.0"
+        <Button layoutX="466.0" layoutY="14.0" mnemonicParsing="false" onAction="#decrypt" prefHeight="27.0"
                 prefWidth="120.0"
-                style="-fx-background-color: #1B262C; -fx-border-color: #bbe1fa; -fx-border-width: 4px;" text="Decrypt"
-                stylesheets="@../css/launcher.css" textFill="#bbe1fa"/>
-        <Button layoutX="447.0" layoutY="15.0" mnemonicParsing="false" onAction="#encrypt" prefHeight="27.0"
+                style="-fx-background-color: #1a2a33; -fx-border-color: #bbe1fa; -fx-border-width: 4px;"
+                stylesheets="@../css/launcher.css" text="Decrypt" textFill="#bbe1fa"/>
+        <Button layoutX="240.0" layoutY="15.0" mnemonicParsing="false" onAction="#encrypt" prefHeight="27.0"
                 prefWidth="120.0"
-                style="-fx-background-color: #1B262C; -fx-border-color: #bbe1fa; -fx-border-width: 4px;" text="Encrypt"
-                stylesheets="@../css/launcher.css" textFill="#bbe1fa"/>
+                style="-fx-background-color: #1a2a33; -fx-border-color: #bbe1fa; -fx-border-width: 4px;"
+                stylesheets="@../css/launcher.css" text="Encrypt" textFill="#bbe1fa"/>
+    </Pane>
+    <Pane fx:id="titlebar" onMouseDragged="#move" onMousePressed="#press" prefHeight="55.0" prefWidth="600.0"
+          style="-fx-background-color: #1a2a33; -fx-border-color: #bbe1fa; -fx-border-width: 4px;">
+        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="9.0" mnemonicParsing="false"
+                onAction="#exit" prefHeight="37.0" prefWidth="37.0"
+                style="-fx-background-color: #1a2a33; -fx-border-color: #bbe1fa; -fx-border-width: 4px;"
+                stylesheets="@../css/launcher.css" text="X" textFill="#bbe1fa">
+            <font>
+                <Font name="Roboto Light" size="12.0"/>
+            </font>
+        </Button>
+        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="499.0" layoutY="9.0" mnemonicParsing="false"
+                onAction="#minimize" prefHeight="37.0" prefWidth="37.0"
+                style="-fx-background-color: #1a2a33; -fx-border-color: #bbe1fa; -fx-border-width: 4px;"
+                stylesheets="@../css/launcher.css" text="_" textFill="#bbe1fa">
+            <font>
+                <Font name="Roboto Light" size="12.0"/>
+            </font>
+        </Button>
+        <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="284.0" layoutY="11.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@../icons/rrc_icon.png"/>
+        </ImageView>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="-3.0" prefHeight="62.0"
+               prefWidth="74.0" text="RRC" textFill="#bbe1fa">
+            <font>
+                <Font name="Roboto Light" size="20.0"/>
+            </font>
+        </Label>
     </Pane>
 </AnchorPane>

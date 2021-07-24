@@ -1,26 +1,26 @@
 .text-area .content {
-    -fx-background-color: #1B262C;
+    -fx-background-color: #1a2a33;
 }
 
 .text-area {
-    -fx-background-color: #1B262C;
+    -fx-background-color: #1a2a33;
     -fx-text-fill: #bbe1fa;
 }
 
 .spinner .content {
-    -fx-body-color: #1B262C;
+    -fx-body-color: #1a2a33;
     -fx-text-fill: #bbe1fa;
 }
 
 .spinner .text-field {
-    -fx-background-color: #1B262C;
+    -fx-background-color: #1a2a33;
     -fx-text-fill: #bbe1fa;
 }
 
 .spinner .increment-arrow-button,
 .spinner .decrement-arrow-button {
     -fx-body-color: #BBE1FA;
-    -fx-background-color: #1B262C;
+    -fx-background-color: #1a2a33;
     -fx-border-color: #BBE1FA;
     -fx-border-width: 1px;
 }
