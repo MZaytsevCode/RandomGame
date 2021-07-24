@@ -3,9 +3,12 @@ package com.merive;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,15 +18,19 @@ import java.util.ResourceBundle;
 public class LauncherController implements Initializable {
 
     @FXML
+    Pane titlebar;
+
+    @FXML
     Label label;
 
     @FXML
-    Button startButton, noteButton, calculatorButton, mailButton, watchButton, RRCButton, exitButton;
+    Button startButton, noteButton, calculatorButton, emailButton, timeButton, RRCButton, exitButton, hideButton;
 
     @FXML
-    ImageView launcherImage, noteImage, calculatorImage, mailImage, watchImage, RRCImage;
+    ImageView launcherImage, noteImage, calculatorImage, emailImage, timeImage, RRCImage;
 
     String selectedApplication;
+    double x, y;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -84,8 +91,6 @@ public class LauncherController implements Initializable {
 
     public void clickNote() {
         selectedApplication = "Note";
-        resetButtons();
-        noteButton.setStyle("-fx-background-color: #3282b8; -fx-border-color: #bbe1fa; -fx-border-width: 4px;");
         resetImage();
         noteImage.setVisible(true);
         label.setText("Selected: Note");
@@ -93,58 +98,59 @@ public class LauncherController implements Initializable {
 
     public void clickCalculator() {
         selectedApplication = "Calculator";
-        resetButtons();
-        calculatorButton.setStyle("-fx-background-color: #3282b8; -fx-border-color: #bbe1fa; -fx-border-width: 4px;");
         resetImage();
         calculatorImage.setVisible(true);
         label.setText("Selected: Calculator");
     }
 
-    public void clickMail() {
+    public void clickEmail() {
         selectedApplication = "Email";
-        resetButtons();
-        mailButton.setStyle("-fx-background-color: #3282b8; -fx-border-color: #bbe1fa; -fx-border-width: 4px;");
         resetImage();
-        mailImage.setVisible(true);
+        emailImage.setVisible(true);
         label.setText("Selected: Email");
     }
 
-    public void clickWatch() {
+    public void clickTime() {
         selectedApplication = "Time";
-        resetButtons();
-        watchButton.setStyle("-fx-background-color: #3282b8; -fx-border-color: #bbe1fa; -fx-border-width: 4px;");
         resetImage();
-        watchImage.setVisible(true);
+        timeImage.setVisible(true);
         label.setText("Selected: Time");
     }
 
     public void clickRRC() {
         selectedApplication = "RRC";
-        resetButtons();
-        RRCButton.setStyle("-fx-background-color: #3282b8; -fx-border-color: #bbe1fa; -fx-border-width: 4px;");
         resetImage();
         RRCImage.setVisible(true);
         label.setText("Selected: RRC");
     }
 
     public void exit() {
-        System.exit(0);
+        Platform.exit();
     }
 
-    public void resetButtons() {
-        noteButton.setStyle("-fx-background-color: #bbe1fa; -fx-border-color: #0f4c75; -fx-border-width: 4px;");
-        calculatorButton.setStyle("-fx-background-color: #bbe1fa; -fx-border-color: #0f4c75; -fx-border-width: 4px;");
-        mailButton.setStyle("-fx-background-color: #bbe1fa; -fx-border-color: #0f4c75; -fx-border-width: 4px;");
-        watchButton.setStyle("-fx-background-color: #bbe1fa; -fx-border-color: #0f4c75; -fx-border-width: 4px;");
-        RRCButton.setStyle("-fx-background-color: #bbe1fa; -fx-border-color: #0f4c75; -fx-border-width: 4px;");
+    public void minimize() {
+        ((Stage) titlebar.getScene().getWindow()).setIconified(true);
+    }
+
+    @FXML
+    public void move(MouseEvent me) {
+        Stage stage = (Stage) ((Node) me.getSource()).getScene().getWindow();
+        stage.setX(me.getScreenX() - x);
+        stage.setY(me.getScreenY() - y);
+    }
+
+    @FXML
+    public void press(MouseEvent me) {
+        x = me.getSceneX();
+        y = me.getSceneY();
     }
 
     public void resetImage() {
         launcherImage.setVisible(false);
         noteImage.setVisible(false);
         calculatorImage.setVisible(false);
-        mailImage.setVisible(false);
-        watchImage.setVisible(false);
+        emailImage.setVisible(false);
+        timeImage.setVisible(false);
         RRCImage.setVisible(false);
     }
 }
