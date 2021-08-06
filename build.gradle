@@ -24,6 +24,7 @@ mainClassName = 'com.merive.Launcher'
 jar {
     manifest {
         attributes 'Main-Class': 'com.merive.Start'
+        attributes 'Application-Name': 'MTools'
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
